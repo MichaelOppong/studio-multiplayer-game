@@ -13,6 +13,7 @@ import TwentyOneQuestions from './games/twentyOneQuestions/TwentyOneQuestions.js
 import burst_Forth from "./games/Burst_Forth/burstForth.js";
 import fight from "./games/fight/fight.js";
 import uno from './games/uno/uno.js';
+import Pictionary from './games/pictionary';
 
 const gameData = {
 
@@ -152,6 +153,14 @@ const gameData = {
     component: GoogleGossip
   },
 
+  pictionary: {
+    title: "Pictionary",
+    authors: "Really Cool People",
+    description: "Fun Pictionary game",
+    minUsers: 2,
+    maxUsers: 2,
+    component: Pictionary
+  }
 };
 
 export default gameData;

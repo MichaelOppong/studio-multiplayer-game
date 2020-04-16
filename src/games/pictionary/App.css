@@ -1,0 +1,22 @@
+canvas {
+  border:2px solid;
+}
+
+.App{
+  text-align:center;
+}
+body{
+  background-color:turquoise;
+  font-family: Helvetica;
+}
+canvas{
+  background:white;
+}
+
+.scoreboard {
+  border:solid black 3px;
+  display: flex;
+  justify-content:space-around;
+
+}
+
