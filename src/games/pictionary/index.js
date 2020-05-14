@@ -1,39 +1,40 @@
-import GameComponent from "../../GameComponent.js";
 import React from "react";
+import GameComponent from "../../GameComponent.js";
+import App from "./App";
 import UserApi from "../../UserApi.js";
-
 
 export default class Pictionary extends GameComponent {
   constructor(props) {
     super(props);
-
+    let players = this.getSessionUserIds();
     this.state = {
-      currentUser: this.getSessionCreatorUserId()
+      data: null,
+      players,
     };
+    this.updateFirebase = this.updateFirebase.bind(this);
   }
 
   onSessionDataChanged(data) {
+    console.log(data);
     this.setState({
-      currentUser: data.current_user
+      data,
     });
-  }  
+  }
+
+  updateFirebase(data) {
+    this.getSessionDatabaseRef().update(data);
+  }
 
   render() {
-    let id = this.getSessionId();
-    let users = this.getSessionUserIds().map((user_id) => (
-      <li key={user_id}>{user_id}</li>
-    ));
-    let creator = this.getSessionCreatorUserId();
     return (
       <div>
-        <p>Session ID: {id}</p>
-        <p>Session creator: {creator}</p>
-        <p>Session users:</p>
-        <ul>
-          {users}
-        </ul>
+        <App
+          data={this.state.data}
+          updateFirebase={this.updateFirebase}
+          UserApi={UserApi}
+          players={this.state.players}
+        />
       </div>
     );
   }
- 
 }
