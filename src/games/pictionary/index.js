@@ -9,9 +9,23 @@ export default class Pictionary extends GameComponent {
     let players = this.getSessionUserIds();
     this.state = {
       data: null,
+      myID: null,
       players,
     };
     this.updateFirebase = this.updateFirebase.bind(this);
+    this.whoAmI = this.whoAmI.bind(this);
+    this.whoAmI();
+  }
+
+  componentDidMount() {
+    this.whoAmI();
+  }
+
+  whoAmI() {
+    let myID = this.getMyUserId();
+    this.setState({
+      myID,
+    });
   }
 
   onSessionDataChanged(data) {

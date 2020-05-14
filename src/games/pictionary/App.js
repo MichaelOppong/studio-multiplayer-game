@@ -9,7 +9,7 @@ const initialState = {
   round: 1,
   phase: "drawing",
   score: 0,
-  drawingPlayer: 0,
+  drawingPlayer: null,
   animal: "",
   players: [],
 };
@@ -37,9 +37,15 @@ function reducer(state, action) {
         round: state.round + 1,
       };
     case "setDrawingPlayer":
+      let newDrawingPlayer;
+      if (state.drawingPlayer === state.players[0]) {
+        newDrawingPlayer = state.players[1];
+      } else {
+        newDrawingPlayer = state.players[0];
+      }
       return {
         ...state,
-        drawingPlayer: state.drawingPlayer === 1 ? 2 : 1,
+        drawingPlayer: newDrawingPlayer,
       };
     case "setScore":
       return {
@@ -47,17 +53,22 @@ function reducer(state, action) {
         score: state.score + 1,
       };
     default:
-      throw new Error();
+      console.error("Reducer case not found in App.js.");
   }
 }
 
 function App(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   useEffect(() => {
     dispatch({
       type: "setPlayers",
       payload: props.players,
+    });
+  }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: "setDrawingPlayer",
     });
   }, []);
 
@@ -73,7 +84,7 @@ function App(props) {
     dispatch(action);
     props.updateFirebase(state);
   }
-
+  console.table(state);
   return (
     <div className="pictionary-app">
       <h1>Code Nation Presents: Pictionary</h1>
