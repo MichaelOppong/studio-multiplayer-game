@@ -12,9 +12,10 @@ export default class Pictionary extends GameComponent {
       myID: null,
       players,
     };
-    this.updateFirebase = this.updateFirebase.bind(this);
-    this.whoAmI = this.whoAmI.bind(this);
-    this.whoAmI();
+    // this.updateFirebase = this.updateFirebase.bind(this);
+    // this.whoAmI = this.whoAmI.bind(this);
+    // this.onSessionDataChanged = this.onSessionDataChanged.bind(this);
+    // this.getSessionDatabaseRef = this.getSessionDatabaseRef.bind(this);
   }
 
   componentDidMount() {
@@ -29,14 +30,19 @@ export default class Pictionary extends GameComponent {
   }
 
   onSessionDataChanged(data) {
-    console.log(data);
+    console.log("data from onSessionDataChanged:", data);
     this.setState({
       data,
     });
   }
 
   updateFirebase(data) {
-    this.getSessionDatabaseRef().update(data);
+    console.log("data from updateFirebase", data);
+    this.getSessionDatabaseRef().update(data, (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
   }
 
   render() {
@@ -44,9 +50,17 @@ export default class Pictionary extends GameComponent {
       <div>
         <App
           data={this.state.data}
-          updateFirebase={this.updateFirebase}
+          updateFirebase={(data) => {
+            console.log("data from updateFirebase", data);
+            this.getSessionDatabaseRef().update(data, (error) => {
+              if (error) {
+                console.error(error);
+              }
+            });
+          }}
           UserApi={UserApi}
           players={this.state.players}
+          myID={this.state.myID}
         />
       </div>
     );

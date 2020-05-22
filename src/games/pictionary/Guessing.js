@@ -28,18 +28,18 @@ function Guessing(props) {
   }
 
   function handleNextGameButtonClick() {
-    props.globalUpdate({
+    props.dispatch({
       type: "setAnimal",
       payload: "",
     });
-    props.globalUpdate({
+    props.dispatch({
       type: "setRound",
     });
-    props.globalUpdate({
+    props.dispatch({
       type: "setPhase",
       payload: "drawing",
     });
-    props.globalUpdate({
+    props.dispatch({
       type: "setDrawingPlayer",
     });
     let canvas = props.refCanvas.current;

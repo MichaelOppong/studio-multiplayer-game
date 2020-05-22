@@ -64,7 +64,7 @@ function App(props) {
       type: "setPlayers",
       payload: props.players,
     });
-  }, []);
+  }, [props]);
 
   useEffect(() => {
     dispatch({
@@ -75,26 +75,28 @@ function App(props) {
   let refCanvas = useRef(null);
 
   function setScore() {
-    globalUpdate({
+    dispatch({
       type: "setScore",
     });
   }
 
-  function globalUpdate(action) {
-    dispatch(action);
+  useEffect(() => {
     props.updateFirebase(state);
-  }
-  console.table(state);
+  }, [props, state]);
+
+  //console.log("state:", state);
+  //console.log("props:", props);
+
   return (
     <div className="pictionary-app">
       <h1>Code Nation Presents: Pictionary</h1>
-      {state.phase === "drawing" && (
-        <Drawing globalUpdate={globalUpdate} animal={state.animal} />
+      {state.phase === "drawing" && state.drawingPlayer === props.myID && (
+        <Drawing dispatch={dispatch} animal={state.animal} />
       )}
       <Canvas ref={refCanvas} animal={state.animal} phase={state.phase} />
-      {state.phase === "guessing" && (
+      {state.phase === "guessing" && state.drawingPlayer !== props.myID && (
         <Guessing
-          globalUpdate={globalUpdate}
+          dispatch={dispatch}
           animal={state.animal}
           refCanvas={refCanvas}
           score={state.score}

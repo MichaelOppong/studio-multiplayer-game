@@ -1,22 +1,21 @@
-import ChatRoom from './games/chatroom/ChatRoom.js';
+import ChatRoom from "./games/chatroom/ChatRoom.js";
 import CookieClicker from "./games/cookieClicker/CookieClicker.js";
 import GoogleGossip from "./games/googlegossip/GoogleGossip.js";
-import Mafia from './games/mafia/Mafia.js';
-import Multiplication from './games/multiplication/Multiplication.js';
-import Pokemon from './games/pokemon/Pokemon.js'
-import Pong from './games/pong/Pong.js';
-import RockPaperScissors from './games/rps/RockPaperScissors.js';
-import Spark from './games/spark/Spark.js';
-import TicTacToe from './games/tictactoe/TicTacToe.js';
+import Mafia from "./games/mafia/Mafia.js";
+import Multiplication from "./games/multiplication/Multiplication.js";
+import Pokemon from "./games/pokemon/Pokemon.js";
+import Pong from "./games/pong/Pong.js";
+import RockPaperScissors from "./games/rps/RockPaperScissors.js";
+import Spark from "./games/spark/Spark.js";
+import TicTacToe from "./games/tictactoe/TicTacToe.js";
 import TugOfWar from "./games/TugOfWar/TugOfWar.js";
-import TwentyOneQuestions from './games/twentyOneQuestions/TwentyOneQuestions.js';
+import TwentyOneQuestions from "./games/twentyOneQuestions/TwentyOneQuestions.js";
 import burst_Forth from "./games/Burst_Forth/burstForth.js";
 import fight from "./games/fight/fight.js";
-import uno from './games/uno/uno.js';
-import Pictionary from './games/pictionary';
+import uno from "./games/uno/uno.js";
+import Pictionary from "./games/pictionary/Pictionary.js";
 
 const gameData = {
-
   chatroom: {
     title: "Chat Room",
     authors: "Joe Tessler",
@@ -63,12 +62,12 @@ const gameData = {
   },
 
   pokemon: {
-      title: "Pokemon Simulator",
-      authors: "Imani Greenidge and Raishan Bernard",
-      description: "Turn Based Pokemon Battle",
-      minUsers: 1,
-      maxUsers: 2,
-      component: Pokemon,
+    title: "Pokemon Simulator",
+    authors: "Imani Greenidge and Raishan Bernard",
+    description: "Turn Based Pokemon Battle",
+    minUsers: 1,
+    maxUsers: 2,
+    component: Pokemon,
   },
 
   questions: {
@@ -101,7 +100,8 @@ const gameData = {
   mafia: {
     title: "Mafia",
     authors: "Caelan Springer, Daniel Lin, Daniel Zamilatskiy",
-    description: "Your greatest friends can be your greatest enemy. Trust no one but yourself.",
+    description:
+      "Your greatest friends can be your greatest enemy. Trust no one but yourself.",
     minUsers: 1,
     maxUsers: 20,
     component: Mafia,
@@ -113,7 +113,7 @@ const gameData = {
     description: "click the cookie fast as possible",
     minUsers: 2,
     maxUsers: 2,
-    component: CookieClicker
+    component: CookieClicker,
   },
 
   fight: {
@@ -122,7 +122,7 @@ const gameData = {
     description: "FIGHT!",
     minUsers: 2,
     maxUsers: 2,
-    component: fight
+    component: fight,
   },
 
   Burst_Forth: {
@@ -131,7 +131,7 @@ const gameData = {
     description: "oof",
     minUsers: 2,
     maxUsers: 2,
-    component: burst_Forth
+    component: burst_Forth,
   },
 
   TugOfWar: {
@@ -140,7 +140,7 @@ const gameData = {
     description: "Pull the rope and win ",
     minUsers: 2,
     maxUsers: 2,
-    component: TugOfWar
+    component: TugOfWar,
   },
 
   googlegossip: {
@@ -150,7 +150,7 @@ const gameData = {
       "We are here to spill teas and destroy lives while exposing fake people around us.",
     minUsers: 1,
     maxUsers: 10,
-    component: GoogleGossip
+    component: GoogleGossip,
   },
 
   pictionary: {
@@ -159,8 +159,8 @@ const gameData = {
     description: "Fun Pictionary game",
     minUsers: 2,
     maxUsers: 2,
-    component: Pictionary
-  }
+    component: Pictionary,
+  },
 };
 
 export default gameData;

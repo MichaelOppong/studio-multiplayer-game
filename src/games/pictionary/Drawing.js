@@ -6,14 +6,14 @@ function Drawing(props) {
   function selectAnimal() {
     let animalIndex = Math.ceil(Math.random() * animals.length);
     let newAnimal = animals[animalIndex];
-    props.globalUpdate({
+    props.dispatch({
       type: "setAnimal",
       payload: newAnimal,
     });
   }
 
   function startGuessing() {
-    props.globalUpdate({
+    props.dispatch({
       type: "setPhase",
       payload: "guessing",
     });
